@@ -14,7 +14,7 @@ export const IMAGE_NOT_SPECIFIED = 'IMAGE_NOT_SPECIFIED';
 
 type ImageProps = {
     isPlaceholder?: boolean | null,
-    src?: string,
+    src?: string | null  | undefined ,
     alt?: string,
     height?: string,
     width?: string,

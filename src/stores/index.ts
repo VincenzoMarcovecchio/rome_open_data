@@ -8,11 +8,13 @@ import {
 import thunk, { ThunkAction } from 'redux-thunk';
 import { getWindowProperty } from 'utils/browser';
 import { user } from 'stores/user';
+import { meteo } from 'stores/meteo';
 import { notifications } from 'stores/notifications';
 import { pages } from 'stores/pages';
 
 const reducers = combineReducers({
   user,
+  meteo,
   notifications,
   pages
 });

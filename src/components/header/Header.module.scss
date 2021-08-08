@@ -2,7 +2,7 @@
 @use 'styles/variables/theme';
 
 .header {
-  --header-color: var(--primary-block-color);
+  --header-color: transparent;
   background-color: var(--header-color);
   box-shadow: var(--shadow);
   color: var(--primary-text-color);

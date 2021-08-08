@@ -85,8 +85,8 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
       return (
         <figure className={ A2HSWrapper }>
           <figcaption>
-                    👋 Welcome!<br/>
-                    Add this app to your home screen for the best experience!
+                    👋 Benvenuto!<br/>
+                    puoi installare quest'app ed usarla in maniera offline per una migliore esperienza!
           </figcaption>
           {
             isMobile.iOS()
@@ -96,7 +96,7 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
                   onClick={ this.install }
                   className={ button }
                 >
-                                Add to Home Screen
+                                Aggiungi al desktop
                 </button>
               )
           }
@@ -106,7 +106,7 @@ export default class A2HS extends PureComponent<unknown, InstallState> {
               aria-label="close notice"
               onClick={ this.dismissNotification }
             >
-                        Maybe later
+                        Forse dopo
             </button>
           </div>
         </figure>

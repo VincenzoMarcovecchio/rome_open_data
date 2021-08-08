@@ -1,10 +1,11 @@
-import React from 'react';
-import { useUser } from 'hooks/user';
-import Pages from 'components//pages';
-import Image from 'components/image';
-import Placeholder from 'components/placeholder';
-import styles from './Sidebar.module.scss';
-
+import React from "react";
+import { fetchMeteo } from "../../hooks/meteo/fetchMeteo";
+import Pages from "components/pages";
+import Image from "components/image";
+import Placeholder from "components/placeholder";
+import styles from "./Sidebar.module.scss";
+import useSWR from "swr";
+import { executeGet } from "utils/request";
 const {
   sidebar,
   sidebarProfile,
@@ -13,42 +14,43 @@ const {
   sidebarProfileBio,
   sidebarPages,
   sidebarPagesList,
-  sidebarPagesActive
+  sidebarPagesActive,
 } = styles;
 
 export default function Sidebar(): JSX.Element {
-  const {
-    name,
-    avatar_url,
-    bio
-  } = useUser();
-
+  const { data, error } = useSWR("/api/meteo", executeGet);
+  console.log(data);
   return (
-    <aside className={ sidebar }>
-      <div className={ sidebarProfile }>
+    <aside className={sidebar}>
+      <div className={sidebarProfile}>
         <Image
-          isPlaceholder={ !avatar_url }
-          src={ avatar_url }
-          alt="avatar"
-          className={ sidebarProfileImage }
+          src={
+            data &&
+            `https://openweathermap.org/img/wn/${data.resa.current.weather[0].icon}@2x.png`
+          }
+          alt={data && data.resa.current.weather[0].description}
+          className={sidebarProfileImage}
         />
-        <h2 className={ sidebarProfileName }>
-          <Placeholder content={ name } length="short" />
+        <h2 className={sidebarProfileName}>
+          <Placeholder content={data && data.resa.timezone} length="short" />
         </h2>
-        <p className={ sidebarProfileBio }>
-          <Placeholder content={ bio } length="medium" />
+        <p className={sidebarProfileBio}>
+          <Placeholder
+            content={data && data.resa.current.feels_like + "°C"}
+            length="medium"
+          />
         </p>
       </div>
-      <div className={ sidebarPages }>
-        <h3>Pages</h3>
-        <Pages
-          className={ sidebarPagesList }
-          activeClass={ sidebarPagesActive }
-        >
-          <li><Placeholder length="short" /></li>
-          <li><Placeholder length="short" /></li>
-          <li><Placeholder length="short" /></li>
-        </Pages>
+      <div className={sidebarPages}>
+        <ul>
+          <li>
+            Vento: &nbsp;
+            <Placeholder
+              content={data && data.resa.current.wind_speed + "km"}
+              length="medium"
+            />
+          </li>
+        </ul>
       </div>
     </aside>
   );

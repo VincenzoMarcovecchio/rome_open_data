@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'components/image';
+
 import styles from './Landing.module.scss';
 
 const {
@@ -15,11 +15,10 @@ export default function Landing(): JSX.Element {
     <div className={ wrapper }>
       <div className={ landing }>
         <div className={ landingText }>
-          <h1>PWA Boilerplate</h1>
+          <h1>La dashboard di Roma</h1>
           <p>
-                        Designed to help you kick-start your next project.<br />
-                        This boilerplate is production ready and comes with 
-                        a service worker, redux store, dark-mode, router, and plenty other useful features.
+                      Con in mente la necessità di risolvere i problemi dei cittadini<br />
+                 I dati di Roma capitale per capire meglio le nostre prossime mosse
           </p>
         </div>
         <div className={ landingNavigationWrapper }>
@@ -28,17 +27,11 @@ export default function Landing(): JSX.Element {
             target="_blank"
             rel="noreferrer"
           >
-                        View source code on GitHub
+                       Vedi codice sorgente su GitHub
           </a>
-          <p>Available under MIT license</p>
+      
         </div>
-        <Image
-          className={ landingImage }
-          src="/assets/landing.png"
-          alt="Desktop & Mobile PWA Application"
-          width="400px"
-          height="340px"
-        />
+   
       </div>
     </div>
   );

@@ -3,11 +3,11 @@
 @use 'styles/variables/theme';
 
 .wrapper {
-  background-color: #e3879e;
+  background-color: rgb(142, 0, 28);
   padding: var(--header-height) 0 0;
 
   @include theme.dark-mode {
-    background-color: #2e3191;
+    background-color: rgb(142, 0, 28);
   }
 }
 
